@@ -1,17 +1,29 @@
-import React from 'react';
-
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
-
 import Main from './pages/main';
 import Products from './pages/products';
+import RegisterProducts from './pages/register-products';
 
-const Routes = () => (
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/products/:id" component={Products} />
-        </Switch>
-    </BrowserRouter>
-)
+const routes = [
+    {
+        path: "/main",
+        name: "Main",
+        component: Main,
+        layout: "/admin"
 
-export default Routes;
+    },
+    {
+        path: "/products/:id",
+        name: "Products-Detais",
+        component: Products,
+        layout: "/admin"
+
+    },
+    {
+        path: "/register-products",
+        name: "Register Produtos",
+        component: RegisterProducts,
+        layout: "/admin"
+
+    }
+]
+
+export default routes;

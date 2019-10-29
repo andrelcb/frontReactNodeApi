@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import api from '../../services/api';
+import { Navbar, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header'
 
 import './styles.css'
 
@@ -18,15 +20,15 @@ export default class Main extends Component {
     loadProducts = async (page = 1) => {
         const response = await api.get(`/products?page=${page}`);
 
-        const {docs, ...productInfo} = response.data;
+        const { docs, ...productInfo } = response.data;
 
-        this.setState({products: docs, productInfo, page});
+        this.setState({ products: docs, productInfo, page });
     };
 
     prevPage = () => {
         const { page } = this.state;
 
-        if(page === 1) return;
+        if (page === 1) return;
 
         const pageNumber = page - 1
 
@@ -36,7 +38,7 @@ export default class Main extends Component {
     nextPage = () => {
         const { page, productInfo } = this.state;
 
-        if(page === productInfo.pages) return;
+        if (page === productInfo.pages) return;
 
         const pageNumber = page + 1;
 
